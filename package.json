@@ -1,0 +1,26 @@
+{
+  "name": "planning-poker",
+  "version": "1.0.0",
+  "description": "Collaborative feature development effort estimation tool",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.16.3",
+    "faye": "^1.2.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomhai/planning-poker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tomhai/planning-poker/issues"
+  },
+  "homepage": "https://github.com/tomhai/planning-poker#readme"
+}
