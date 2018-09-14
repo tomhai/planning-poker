@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./style/planning-poker.css">
+        <title>Planning poker</title>
+    </head>
+
+    <body>
+        <input id="name" type="text" placeholder="user" /><button id="saveUser">ok</button>
+        <div><button id="createPoll">Create poll</button></div>
+        <ul id="polls"></ul>
+        <div id="poll" class="poll-container"></div>
+        <script src="http://localhost:8000/faye/client.js"></script>
+        <script src="./js/ui.js" type="module"></script>
+    </body>
+</html>
