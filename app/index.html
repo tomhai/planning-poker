@@ -4,15 +4,32 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="./style/planning-poker.css">
+        <link rel="stylesheet" href="./style/main.css">
+        <link rel="stylesheet" href="./style/login.css">
+        <link rel="stylesheet" href="./style/vote.css">
         <title>Planning poker</title>
     </head>
 
     <body>
-        <input id="name" type="text" placeholder="user" /><button id="saveUser">ok</button>
-        <div><button id="createPoll">Create poll</button></div>
-        <ul id="polls"></ul>
-        <div id="poll" class="poll-container"></div>
+        <div class="container">
+            <div id="name-container" class="name-container">
+                <div class="name-inner-container">
+                    Hi there!&nbsp;
+                    <input 
+                        id="name" 
+                        class="name-input" 
+                        type="text" 
+                        placeholder="user" 
+                        autocomplete="off" 
+                        maxlength="10"   />
+                    <button id="saveUser" class="save-user">✓</button>
+                </div>
+            </div>
+            <div class="js-poll-container">
+            </div>
+        </div>
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
         <script src="http://localhost:8000/faye/client.js"></script>
         <script src="./js/ui.js" type="module"></script>
     </body>

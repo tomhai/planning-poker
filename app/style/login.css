@@ -1,0 +1,62 @@
+.name-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    transition: height .2s ease-in;
+}
+
+.active .name-container {
+    height: 10%;
+}
+
+.name-inner-container {
+    height: 50px;
+    width: 300px;
+    font-size: 18px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.active .name-inner-container {
+    height: auto;
+}
+
+.name-input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #CCC;
+    color: #32BBAA;
+    box-sizing: border-box;
+    outline: none;
+    font-size: 18px;
+    width: 100px;
+    text-align: center;
+
+    &:focus {
+        outline: none;    
+    }
+}
+
+.active .name-input {
+    border-bottom: none;
+}
+
+.name-input::-webkit-input-placeholder {
+    color: #AAA;
+}
+
+.name-input:focus::-webkit-input-placeholder {
+    color: #4A4A4A;
+}
+
+.active .save-user {
+    visibility: hidden;
+    display: none;
+}

@@ -15,3 +15,12 @@ export function elem(parent, type, text, eventHandler, className) {
     }
     return elem;
 }
+
+export function setActive(element, elements) {
+    for (var n = 0; n < elements.length; ++n) {
+        if (elements[n] !== this) {
+            elements[n].className = '';
+        }
+    }
+    element.classList.add('active'); 
+}

@@ -1,61 +1,42 @@
-import * as API from './api.js';
-import {elem} from './utils.js';
+import {elem, setActive} from './utils.js';
+import {PlanningPoker} from './../components/PlanningPoker.js';
 
 onload = (() => {
     console.log("#### Planning poker ####");
 
-    let username = null;
-
-    document.querySelector('#saveUser')
-        .addEventListener('click', (e) => {
-            const userInput = document.querySelector('#name');
-            if (userInput.value.length === 0) {
-                alert('Must set username!');
-            } else {
-                userInput.readOnly = true;
-                e.target.disabled = true;
-                username = userInput.value;
-            }
-        });   
-
-    document.querySelector('#createPoll')
-        .addEventListener('click', () => {
-            if (!username) {
-               alert('Must set username!');
-            } else {
-                API.createPoll(username);
-            }
-        });
-
-    const onPollUpdate = (pollId, poll) => {
-        const container = document.querySelector('#poll');
-        while (container.firstChild) {
-            container.removeChild(container.firstChild);
+    let username = new URL(location.href).searchParams.get('user');
+    if (username) {
+        const userInput = document.querySelector('#name');
+        userInput.value = username;
+        userInput.readOnly = true;
+        const container = document.querySelector('.container');
+        container.classList.add('active');
+    }
+ 
+    function saveUser() {
+        const userInput = document.querySelector('#name');
+        const container = document.querySelector('.container');
+        if (userInput.value.length === 0) {
+            alert('Must set username!');
+        } else {
+            userInput.readOnly = true;
+            username = userInput.value;
+            container.classList.add('active');
+            history.replaceState(null, null, '?user=' + username);
         }
-        elem(container, 'div', `#${pollId}: creator(${poll.user})`);
-        poll.cards.map((item, index) => {
-            const voteContainer = elem(container, 'div', null, () => {
-                if (!username) {
-                   alert('Must set username!');
-                } else {
-                    API.saveVote(pollId, username, index);
-                }
-            }, 'vote');
-
-            elem(voteContainer, 'div', item);
-            elem(voteContainer, 'div', poll.counted[index]);
-        });
     }
 
-    API.getPolls((pollsArray) => {
-        const polls = document.querySelector('#polls');
-        while (polls.firstChild) {
-            polls.removeChild(polls.firstChild);
+    document.querySelector('#saveUser').addEventListener('click', () => {
+        saveUser();
+    });   
+
+    document.querySelector('#name').onkeyup = (e) => {
+        if (e.keyCode === 13) {
+            saveUser();
         }
-        pollsArray.map((item) => {
-            elem(polls, 'li', `#${item[0]}: creator(${item[1].user})`, () => {
-                API.joinPoll(item[0], username, onPollUpdate);
-            });
-        });
-    });
-})(API, elem)
+    };
+
+    const domContainer = document.querySelector('.js-poll-container');
+    ReactDOM.render(React.createElement(PlanningPoker, {getUser: () => {return username;}}), domContainer);
+
+})(elem, React, ReactDOM, PlanningPoker)
