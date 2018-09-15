@@ -5,7 +5,7 @@ let pollCountId = 1;
 function vote(pollId, user, index) {
     let poll = polls.get(pollId);
     poll.votes.set(user, index);
-    poll.counted = [0, 0, 0, 0, 0, 0, 0, 0];
+    poll.counted = Array.from({ length: cards.length }, () => 0);
     for (let [key, index] of poll.votes) {
         poll.counted[index]++;
     }
@@ -19,7 +19,7 @@ exports.init = function(bayeux) {
                     user: message.user,
                     cards: cards,
                     votes: new Map(),
-                    counted: [0,0,0,0,0,0,0,0]
+                    counted: Array.from({ length: cards.length }, () => 0)
                 })
                 console.log(`${message.user} created a new poll #${pollCountId}`);
                 bayeux.getClient().publish('/control', {
