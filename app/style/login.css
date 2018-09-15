@@ -36,24 +36,23 @@
     box-sizing: border-box;
     outline: none;
     font-size: 18px;
-    width: 100px;
+    min-width: 70px;
     text-align: center;
+    margin-right: 5px;
+}
 
-    &:focus {
-        outline: none;    
-    }
+.name-input:hover {
+    cursor: text;    
+}
+
+.name-input[contenteditable=true]:empty:before {
+    content: attr(placeholder);
+    display: block;
+    color: #AAA;
 }
 
 .active .name-input {
     border-bottom: none;
-}
-
-.name-input::-webkit-input-placeholder {
-    color: #AAA;
-}
-
-.name-input:focus::-webkit-input-placeholder {
-    color: #4A4A4A;
 }
 
 .active .save-user {

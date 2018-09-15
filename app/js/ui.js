@@ -6,8 +6,8 @@ onload = (() => {
     let username = new URL(location.href).searchParams.get('user');
     if (username) {
         const userInput = document.querySelector('#name');
-        userInput.value = username;
-        userInput.readOnly = true;
+        userInput.textContent = username;
+        userInput.contentEditable = 'false';
         const container = document.querySelector('.container');
         container.classList.add('active');
     }
@@ -15,11 +15,11 @@ onload = (() => {
     function saveUser() {
         const userInput = document.querySelector('#name');
         const container = document.querySelector('.container');
-        if (userInput.value.length === 0) {
+        if (userInput.textContent.length === 0) {
             alert('Must set username!');
         } else {
-            userInput.readOnly = true;
-            username = userInput.value;
+            userInput.contentEditable = 'false';
+            username = userInput.textContent;
             container.classList.add('active');
             history.replaceState(null, null, '?user=' + username);
         }
@@ -29,8 +29,9 @@ onload = (() => {
         saveUser();
     });   
 
-    document.querySelector('#name').onkeyup = (e) => {
+    document.querySelector('#name').onkeydown = (e) => {
         if (e.keyCode === 13) {
+            e.preventDefault();
             saveUser();
         }
     };
