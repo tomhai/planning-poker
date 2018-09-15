@@ -1,4 +1,3 @@
-import {elem, setActive} from './utils.js';
 import {PlanningPoker} from './../components/PlanningPoker.js';
 
 onload = (() => {
@@ -39,4 +38,4 @@ onload = (() => {
     const domContainer = document.querySelector('.js-poll-container');
     ReactDOM.render(React.createElement(PlanningPoker, {getUser: () => {return username;}}), domContainer);
 
-})(elem, React, ReactDOM, PlanningPoker)
+})(PlanningPoker, React, ReactDOM);
