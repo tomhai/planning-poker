@@ -40,12 +40,12 @@ export class PlanningPoker extends React.Component {
 
     render() {
         return React.createElement(
-            "div",
+            'div',
             {className: 'poll-container'},
             React.createElement(
-                "div",
+                'div',
                 null,
-                React.createElement("button", { id: "createPoll", onClick: this.createPoll.bind(this) }, "Create poll")
+                React.createElement('button', { id: 'createPoll', onClick: this.createPoll.bind(this) }, 'Create poll')
             ),
             this.state.polls && React.createElement(Polls, { 
                 polls: this.state.polls,

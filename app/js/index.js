@@ -1,7 +1,7 @@
 import {PlanningPoker} from './../components/PlanningPoker.js';
 
 onload = (() => {
-    console.log("#### Planning poker ####");
+    console.log('#### Planning poker ####');
 
     let username = new URL(location.href).searchParams.get('user');
     if (username) {
