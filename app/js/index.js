@@ -3,20 +3,27 @@ import {PlanningPoker} from './../components/PlanningPoker.js';
 onload = (() => {
     console.log('#### Planning poker ####');
 
-    let username = new URL(location.href).searchParams.get('user');
-    if (username) {
+    let username = null;
+    let temp = new URL(location.href).searchParams.get('user');
+
+    if (temp && validUser(temp)) {
+        username = temp;
         const userInput = document.querySelector('#name');
         userInput.textContent = username;
         userInput.contentEditable = 'false';
         const container = document.querySelector('.container');
         container.classList.add('active');
     }
- 
+
+    function validUser(user) {
+        return /^[a-zA-Z\-]{3,}$/.test(user);
+    }
+
     function saveUser() {
         const userInput = document.querySelector('#name');
         const container = document.querySelector('.container');
-        if (userInput.textContent.length === 0) {
-            alert('Must set username!');
+        if (!validUser(userInput.textContent)) {
+            alert('Must set valid username!');
         } else {
             userInput.contentEditable = 'false';
             username = userInput.textContent;
