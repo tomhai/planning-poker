@@ -10,7 +10,7 @@ First make sure you have [Node.js](https://nodejs.org/en/) installed on your com
 ```
 git clone git@github.com:tomhai/planning-poker.git
 cd planning-poker/
-npm instal
+npm install
 node server
 open http://localhost:8000
 ```
