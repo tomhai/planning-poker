@@ -39,6 +39,13 @@ export class PlanningPoker extends React.Component {
     }
 
     render() {
+        let showResultsTitle = false;
+        for (let j = 0; this.state.poll && j <  this.state.poll.cards.length; j++) {
+            if (this.state.poll.counted[j] > 0) {
+                showResultsTitle = true;
+            }
+        }
+
         return React.createElement(
             'div',
             {className: 'poll-container'},
@@ -59,8 +66,12 @@ export class PlanningPoker extends React.Component {
                     id: 'poll', 
                     className: 'vote-container'
                 },
+                showResultsTitle && React.createElement('span', {className: 'result-title'},
+                    React.createElement('span', null, 'Results ', React.createElement('span', {className: 'result-hand'}, '👉'))),
                 this.state.poll && React.createElement(Results, {poll: this.state.poll}),
-                this.state.poll && React.createElement(Voting, {poll: this.state.poll, vote: this.onVote.bind(this)})
+                this.state.poll && !showResultsTitle && React.createElement('div', {className: 'vote-title'},
+                    React.createElement('span', null, 'Vote! ', React.createElement('span', {className: 'result-hand'}, '👇'))),
+                this.state.poll && React.createElement(Vote, {poll: this.state.poll, pollId: this.state.pollId, vote: this.onVote.bind(this)})
             )
         );
     }

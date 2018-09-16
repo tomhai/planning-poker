@@ -1,8 +1,9 @@
 export class Results extends React.Component {
     render() {
         const list = [];
-        for (let j = 0; j < this.props.poll.cards.length; j++) 
+        for (let j = 0; j < this.props.poll.cards.length; j++) {
             list.push({'card': this.props.poll.cards[j], 'count': this.props.poll.counted[j]});
+        }
 
         list.sort(function(a, b) {
             return ((a.count < b.count) ? 1 : ((a.count == b.count) ? 0 : -1));
@@ -27,7 +28,7 @@ export class Results extends React.Component {
             return item.count > 0 && React.createElement('div', {className: 'result-inner-container', key: item.card}, cards);
         });
 
-        return React.createElement('div', {className: 'results-container'}, results);
+        return React.createElement('span', {className: 'results-container'}, results);
 
     }
 }
