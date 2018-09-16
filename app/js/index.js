@@ -16,7 +16,7 @@ onload = (() => {
     }
 
     function validUser(user) {
-        return /^[a-zA-Z\-]{3,}$/.test(user);
+        return /^[a-zA-Z\-åäöÅÄÖ0-9]{3,}$/.test(user);
     }
 
     function saveUser() {
