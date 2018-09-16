@@ -1,7 +1,7 @@
 import * as API from './../js/api.js';
 import {Polls} from './Polls.js';
 import {Results} from './Results.js';
-import {Voting} from './Voting.js';
+import {Vote} from './Vote.js';
 
 export class PlanningPoker extends React.Component {
     constructor(props) {

@@ -1,7 +1,13 @@
-export class Voting extends React.Component {
+export class Vote extends React.Component {
     constructor(props) {
         super(props);
         this.state = { activeIndex: -1 };
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.pollId !== this.props.pollId) {
+            this.setState({activeIndex: -1});
+        }
     }
 
     render() {
