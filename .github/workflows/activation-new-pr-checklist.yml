@@ -12,9 +12,13 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
+            const msg = `Did you make changes to the subscription pages?
+            Please verify that everything still works by going through the
+            (Subscription checklist)[https://epidemicsound.atlassian.net/wiki/spaces/TECH/pages/2566750376/Subscription+checklist]`
+
             github.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: 'Test activation checklist'
+              body: msg
             })
