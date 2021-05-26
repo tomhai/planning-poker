@@ -17,3 +17,5 @@ open http://localhost:8000
 
 ## Notes
 The demo uses a lot of ECMAScript6 features (Map Data-Structure, Arrow Functions, Template Literals, Value Export/Import) without using a precompiler, so be sure to use a modern browser that supports them.
+
+A change
